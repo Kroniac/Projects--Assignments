@@ -19,6 +19,7 @@ class BurgerBuilder extends Component {
       bacon: 0
     },
     totalPrice: 4,
+    purchase: false,
     msg: "Please add some ingredients",
     label: {
       salad: "Salad",
@@ -26,6 +27,17 @@ class BurgerBuilder extends Component {
       cheese: "Cheese",
       bacon: "Bacon"
     }
+  };
+
+  updatePurchaseState = ingredients => {
+    const sum = Object.keys(ingredients)
+      .map(Key => {
+        return ingredients[Key];
+      })
+      .reduce((sum, el) => {
+        return sum + el;
+      }, 0);
+    this.setState({ purchase: sum > 0 });
   };
   /* addingredientHandler - to add ingredients by button control
     oldCount - old count of the ingredient
@@ -41,6 +53,7 @@ class BurgerBuilder extends Component {
     const priceAddition = INGREDIENT_PRICE[type];
     const newPrice = this.state.totalPrice + priceAddition;
     this.setState({ totalPrice: newPrice, ingredients: updatedIngredients });
+    this.updatePurchaseState(updatedIngredients);
   };
 
   removeIngredientHandler = type => {
@@ -58,10 +71,12 @@ class BurgerBuilder extends Component {
         ingredients: updatedIngredients,
         msg: "Please add some ingredients"
       });
+      this.updatePurchaseState(updatedIngredients);
     } else
       this.setState({
         msg: "No " + this.state.label[type] + " in burger to remove"
       });
+    
   };
   render() {
     return (
@@ -70,6 +85,7 @@ class BurgerBuilder extends Component {
         <BuildControls
           ingredientAdded={this.addIngredientHandler}
           ingredientSubtracted={this.removeIngredientHandler}
+          purchasable={this.state.purchase}
           price={this.state.totalPrice}
         />
       </Aux>
