@@ -23,6 +23,7 @@ class MainPage extends Component {
         <Switch>
           <Route path="/courses" component={Courses} />
           <Route path="/users" component={Users} />
+          <Redirect from= "/all-courses" to="courses" />
           <Route render={()=><h1>Page Not Found</h1>} />
         </Switch>
       </div>
