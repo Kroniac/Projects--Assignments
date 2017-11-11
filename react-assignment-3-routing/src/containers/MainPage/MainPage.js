@@ -3,6 +3,7 @@ import { Route, NavLink } from "react-router-dom";
 import Courses from "../Courses/Courses";
 import Users from "../Users/Users";
 import "./MainPage.css"
+import Course from "../Course/Course"
 
 class MainPage extends Component {
   render() {
@@ -16,8 +17,9 @@ class MainPage extends Component {
         </ul>
         </nav>
         </header>
-        <Route path="/courses" component={Courses} />
+        <Route path="/courses" exact component={Courses} />
         <Route path="/users" component={Users} />
+        <Route path="/courses/course" component={Course}/>
       </div>
     );
   }
