@@ -28,7 +28,7 @@ class Courses extends Component {
             );
           })}
         </section>
-       
+        <Route path={this.props.match.url + "/:id"} component={Course}/>
       </div>
     );
   }

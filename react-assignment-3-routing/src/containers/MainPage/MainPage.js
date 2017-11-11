@@ -17,9 +17,9 @@ class MainPage extends Component {
         </ul>
         </nav>
         </header>
-        <Route path="/courses" exact component={Courses} />
+        <Route path="/courses" component={Courses} />
         <Route path="/users" component={Users} />
-        <Route path="/courses/:id" component={Course}/>
+        
       </div>
     );
   }
