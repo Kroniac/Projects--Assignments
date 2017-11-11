@@ -1,13 +1,16 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import MainPage from "./containers/MainPage/MainPage";
+import MainPage from "./containers/MainPage/MainPage"
+import {BrowserRouter} from "react-router-dom"
 
 class App extends Component {
-  render() {
+  render () {
     return (
+      <BrowserRouter>
       <div className="App">
-        <MainPage />
+       <MainPage />
       </div>
+      </BrowserRouter>
     );
   }
 }
