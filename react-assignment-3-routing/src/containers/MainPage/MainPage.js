@@ -1,17 +1,26 @@
-import React ,{Component} from 'react';
-import {Route} from "react-router-dom"
-import Courses from '../Courses/Courses';
-import Users from '../Users/Users';
+import React, { Component } from "react";
+import { Route, NavLink } from "react-router-dom";
+import Courses from "../Courses/Courses";
+import Users from "../Users/Users";
+import "./MainPage.css"
 
 class MainPage extends Component {
- render(){
-     return(
-        <div>
+  render() {
+    return (
+      <div>
+          <header>
+            <nav>
+        <ul>
+          <li><NavLink to="/courses">Courses</NavLink></li>
+          <li><NavLink to="/users">Users</NavLink></li>
+        </ul>
+        </nav>
+        </header>
         <Route path="/courses" component={Courses} />
         <Route path="/users" component={Users} />
-        </div>
-     )
- }
+      </div>
+    );
+  }
 }
 
 export default MainPage;
